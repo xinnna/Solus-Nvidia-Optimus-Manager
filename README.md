@@ -93,7 +93,7 @@ For Gnome:
 - `99-nvidia.conf`: copy to `/etc/gdm/99-nvidia.conf`
 
 For KDE Plasma:
-- `99-nvidia-sddm.conf`: copy to `/etc/sddm.conf.d/99-nvidia.conf`
+- `99-nvidia-sddm.conf`: copy to `/etc/sddm.conf.d/99-nvidia-sddm.conf`
 
 For ALL:
 - `nvidia-optimus-autoconfig.service`: copy to `/etc/systemd/system/nvidia-optimus-autoconfig.service`
