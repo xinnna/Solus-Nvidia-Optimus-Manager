@@ -56,7 +56,7 @@ Sun Dec  2 16:25:42 2018
 ```
 ## AUTOMATED SCRIPT INSTALL
 - Install the NVIDIA proprietary graphics driver
-- Download this repo, extract, cd into nvidia-optimus-manager-master, and from your terminal, run: 
+- Download this repo, extract, cd into Solus-Nvidia-Optimus-Manager-master, and from your terminal, run: 
     ```
     sh nvidia-optimus-installer.sh
     ```
@@ -65,6 +65,8 @@ Sun Dec  2 16:25:42 2018
 - The script will automatically install and configure everything for Budgie, MATE, Gnome or KDE Plasma. 
 - Reboot
 - That's it!
+
+## MANUAL INSTALL
 
 ## Things to do before manual installation
 
@@ -111,7 +113,7 @@ sudo systemctl enable nvidia-optimus-autoconfig
 - NVIDIA proprietary graphics driver
 - `pciutils`: for the `lspci` command to find the pci bus id for the NVIDIA graphics card.
 
-## Usage
+## USAGE
 
 Three subcommands can be used with the `nvidia-optimus-manager` script:
 - Check the current configuration of the dGPU with the `status` subcommand:
