@@ -4,6 +4,7 @@
 
 # VARIABLES
 ####################################
+SDDM=/etc/sddm.conf.d
 LDM=/etc/lightdm/lightdm.conf.d    # OLD DIRECTORY - USER CONFIRM
 GDM=/etc/gdm
 MOD=/etc/modprobe.d
@@ -27,7 +28,7 @@ clear
 echo ""
 echo "This script will install and autoconfigure"
 echo "the Nvidia-Optimus-Manager for Solus Budgie,"
-echo "MATE, or Gnome editions."
+echo "MATE, Gnome or KDE Plasma editions."
 echo ""
 echo "This WILL require a reboot, once completed"
 echo ""
@@ -46,6 +47,30 @@ then
   sudo cp ${DIR}/${OPT} ${BIN}/${OPT}
   sudo chmod a+x ${BIN}/${OPT}
   sudo cp ${DIR}/${SYSD} /etc/systemd/system/${SYSD}
+  echo ""
+  sudo systemctl daemon-reload && sudo systemctl enable nvidia-optimus-autoconfig
+  echo ""
+    # SYSTEM PREP
+    echo ""
+    echo "Getting things ready..."
+    echo ""
+    sudo mkdir -p ${MOD}
+    echo "blacklist nouveau" | sudo tee ${MOD}/blacklist-nouveau.conf
+    echo ""
+    echo "Installing necessary applications..."
+    echo ""
+    sudo eopkg it pciutils
+    
+elif [ `echo $XDG_CURRENT_DESKTOP` = "KDE" ]
+then
+  echo ""
+  echo "Setting things up for KDE Plasma..."
+  echo ""
+  sleep 2
+  sudo cp $DIR/99-nvidia-sddm.conf $SDDM/99-nvidia-sddm.conf
+  sudo cp $DIR/$OPT $BIN/$OPT
+  sudo chmod a+x ${BIN}/${OPT}
+  sudo cp $DIR/$SYSD /etc/systemd/system/$SYSD
   echo ""
   sudo systemctl daemon-reload && sudo systemctl enable nvidia-optimus-autoconfig
   echo ""
