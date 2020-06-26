@@ -1,6 +1,6 @@
 ## Introduction
 
-This repository has a set of tools to manage the status of the NVIDIA graphics card on an Optimus™ setup. It now supports [Solus](https://getsol.us/home/) with [Budgie](https://budgie-desktop.org/home/), [MATE](https://mate-desktop.org/) or [Gnome](https://www.gnome.org/) desktop.
+This repository has a set of tools to manage the status of the NVIDIA graphics card on an Optimus™ setup. It now supports [Solus](https://getsol.us/home/) with [Budgie](https://budgie-desktop.org/home/), [MATE](https://mate-desktop.org/), [Gnome](https://www.gnome.org/) or [KDE Plasma](https://kde.org/plasma-desktop) desktop.
 
 Three profiles are implemented in the `nvidia-optimus-manager` script:
 - `intel`: The Intel integrated GPU is used for display rendering and the dGPU is suspended by runtime power management. Running the `nvidia-smi` command gives
@@ -62,7 +62,7 @@ Sun Dec  2 16:25:42 2018
     ```
     Please note: Don't run with `sudo`
     
-- The script will automatically install and configure everything for Gnome, MATE, or Budgie. 
+- The script will automatically install and configure everything for Budgie, MATE, Gnome or KDE Plasma. 
 - Reboot
 - That's it!
 
@@ -91,6 +91,9 @@ For MATE:
 
 For Gnome:
 - `99-nvidia.conf`: copy to `/etc/gdm/99-nvidia.conf`
+
+For KDE Plasma:
+- `99-nvidia-sddm.conf`: copy to `/etc/sddm.conf.d/99-nvidia.conf`
 
 For ALL:
 - `nvidia-optimus-autoconfig.service`: copy to `/etc/systemd/system/nvidia-optimus-autoconfig.service`
@@ -132,4 +135,4 @@ Log out to take effect
 ```
 Otherwise the switch happens immediately.
 
-- `autoconfigure` subcommand: Automatically configure the dGPU based on the presence of relevant configuration files (blacklist-nvidia.conf, 00-ldm.conf). This command is used in the systemd service file (nvidia-optimus-autoconfig.service) and the lightdm configuration file (99-nvidia.conf)
+- `autoconfigure` subcommand: Automatically configure the dGPU based on the presence of relevant configuration files (blacklist-nvidia.conf, 00-ldm.conf). This command is used in the systemd service file (nvidia-optimus-autoconfig.service) and the lightdm/sddm configuration files (99-nvidia.conf/99-nvidia-sddm.conf)
